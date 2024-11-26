@@ -32,27 +32,26 @@ const RegisterUser = () => {
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: "url('/image.jpg')" }}
+        style={{ backgroundImage: "url('/bg-login.jpg')" }}
       ></div>
 
       {/* Form Section */}
       <div className="relative z-10 flex min-h-screen justify-end">
-        <div className="w-1/2 bg-gray-200 flex items-center justify-center rounded-s-3xl px-12 dark:bg-gray-800">
+        <div className="w-1/2 bg-zinc-100 flex items-center justify-center rounded-s-3xl px-12 dark:bg-gray-800">
           <div className="w-96 flex flex-col items-center justify-center text-center">
             {/* Logo */}
-            <div className="pb-2">
+            <div className="pb-4">
               <img src="/logo2.png" alt="logo" />
             </div>
 
             {/* Judul */}
             <h2 className="text-3xl font-bold mb-4 leading-5 dark:text-white">
-              Buat Akun Baru!
+              Start Your Adventure!
             </h2>
 
             {/* Sub Judul */}
-            <p className="text-gray-600 mb-6 leading-5">
-              Bergabunglah dengan kami untuk menikmati berbagai layanan
-              eksklusif.
+            <p className="text-gray-400 mb-6 leading-5">
+              Adventure is calling—join us and explore
             </p>
 
             {/* Form */}
