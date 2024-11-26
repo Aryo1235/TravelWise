@@ -1,7 +1,23 @@
 import { TextInput, Button } from "flowbite-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useFormik } from "formik";
 const RegisterUser = () => {
+  const navigate = useNavigate();
+
+  // Fungsi untuk mengirim data registrasi ke backend
+  const handleRegister = async (values) => {
+    try {
+      const response = await axios.post("/register", values);
+      // Jika berhasil, arahkan ke halaman login
+      navigate("/loginuser");
+    } catch (error) {
+      console.error(
+        "Terjadi kesalahan:",
+        error.response?.data?.message || "Terjadi kesalahan!"
+      );
+    }
+  };
   const formik = useFormik({
     initialValues: {
       firstName: "",
@@ -9,6 +25,7 @@ const RegisterUser = () => {
       email: "",
       password: "",
     },
+    onSubmit: handleRegister,
   });
   return (
     <div className="min-h-screen relative">
@@ -39,18 +56,22 @@ const RegisterUser = () => {
             </p>
 
             {/* Form */}
-            <form className="w-full">
+            <form className="w-full" onSubmit={formik.handleSubmit}>
               {/* Nama Depan dan Nama Belakang */}
               <div className="flex gap-2 mb-4">
                 <TextInput
                   type="text"
                   name="firstName"
+                  value={formik.values.firstName}
+                  onChange={formik.handleChange}
                   placeholder="Nama Depan"
                   className="w-1/2"
                   required
                 />
                 <TextInput
                   type="text"
+                  value={formik.values.lastName}
+                  onChange={formik.handleChange}
                   name="lastName"
                   placeholder="Nama Belakang"
                   className="w-1/2"
@@ -60,6 +81,8 @@ const RegisterUser = () => {
               {/* Email */}
               <TextInput
                 type="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
                 name="email"
                 placeholder="Email"
                 className="mb-4"
@@ -68,6 +91,8 @@ const RegisterUser = () => {
               {/* Password */}
               <TextInput
                 type="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
                 name="password"
                 placeholder="Password"
                 className="mb-4"
