@@ -1,10 +1,14 @@
-import { Button } from "flowbite-react";
-import Card from "./components/Card";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+import RegisterUser from "./pages/Register";
 function App() {
   return (
     <div className="App">
-      <Button>Click Me</Button>
-      <Card />
+      <Router>
+        <Routes>
+          <Route path="/register" element={<RegisterUser />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
